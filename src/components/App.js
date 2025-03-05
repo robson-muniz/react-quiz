@@ -73,6 +73,22 @@ function reducer(state, action) {
         hints: state.points > state.highscore ? state.points: state.highscore,
       };
 
+      case "restart":
+        return {
+          ...initialState,
+          questions: state.questions,
+          status: "ready",
+        }
+
+        // return {
+        //   ...state,
+        //   points: 0,
+        //   highscore: 0,
+        //   index: 0,
+        //   answer: null,
+        //   status: "ready",
+        // }
+
     default:
       throw new Error("action unknown");
   }
@@ -135,7 +151,7 @@ function App() {
             /> {/* Show next button */}
           </>
         )}
-        {status === "finished" && <FinishScreen  points={points} maxPossiblePoints={maxPossiblePoints} highscore={highscore} />}
+        {status === "finished" && <FinishScreen  points={points} maxPossiblePoints={maxPossiblePoints} highscore={highscore} dispatch={dispatch} />}
       </Main>
     </div>
   );
