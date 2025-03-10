@@ -44,7 +44,6 @@ A dynamic and interactive quiz application built with React, allowing users to t
 - View your score at the end of the quiz.
 
 ![Quiz Screenshot](![Screenshot 2025-03-10 at 12 32 18](https://github.com/user-attachments/assets/d1d624a8-1bca-4aa2-95ea-4b70afbf14c9)
-)
 
 ## Contributing
 
