@@ -1,23 +1,21 @@
-import React, { useEffect } from 'react';
+import { useEffect } from "react";
 
-function Timer({dispatch, secondsRemaining }) {
+function Timer({ dispatch, secondsRemaining }) {
   const mins = Math.floor(secondsRemaining / 60);
   const seconds = secondsRemaining % 60;
 
-  useEffect(function () {
-    const intervalId = setInterval(function () {
-      // console.log('Timer');
-      dispatch({type: 'tick'})
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      dispatch({ type: "tick" });
     }, 1000);
 
-    // Cleanup function to clear the interval when the component unmounts
     return () => clearInterval(intervalId);
   }, [dispatch]);
 
   return (
-    <div className="timer">
-      {mins < 10 && '0'}
-      {mins}:{seconds < 10 && '0'}
+    <div className="text-2xl font-semibold bg-gray-100 px-6 py-3 rounded-lg">
+      {mins < 10 && "0"}
+      {mins}:{seconds < 10 && "0"}
       {seconds}
     </div>
   );

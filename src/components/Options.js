@@ -1,24 +1,24 @@
-import React from 'react';
-
-function Options({question, dispatch, answer}) {
+function Options({ question, dispatch, answer }) {
   const hasAnswered = answer !== null;
 
   return (
-    <div className='options'>
-      {question.options.map((option, index) =>
+    <div className="grid grid-cols-1 gap-4">
+      {question.options.map((option, index) => (
         <button
-          className={`btn btn-option ${index === answer ? 'answer' : ''} ${
-            hasAnswered
-            ? index === question.correctOption 
-                ? 'correct' 
-                : 'wrong'
-              : ""
-          }`}
           key={option}
+          className={`w-full text-left p-6 rounded-lg text-2xl transition-all duration-300 ${
+            hasAnswered
+              ? index === question.correctOption
+                ? "bg-accent text-white"
+                : "bg-error/10 text-error"
+              : "bg-gray-100 hover:bg-gray-200"
+          }`}
           disabled={hasAnswered}
-          onClick={()=> dispatch({type: 'newAnswer', payload: index})}>
+          onClick={() => dispatch({ type: "newAnswer", payload: index })}
+        >
           {option}
-        </button>)}
+        </button>
+      ))}
     </div>
   );
 }

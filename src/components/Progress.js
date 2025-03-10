@@ -1,12 +1,22 @@
-import React from 'react';
+function Progress({ index, numQuestions, points, maxPossiblePoints, answer }) {
+  const progress = ((index + Number(answer !== null)) / numQuestions) * 100;
 
-function Progress({index, numQuestions, points,maxPossiblePoints,answer}) {
   return (
-    <header className='progress'>
-      <progress value={index + Number(answer !== null)} max={numQuestions} />
-
-      <p>Question <strong>{index + 1}</strong> / {numQuestions}</p>
-      <p><strong>{points} / {maxPossiblePoints}</strong></p>
+    <header className="w-full mb-8">
+      <div className="w-full bg-gray-200 rounded-full h-4 mb-6">
+        <div
+          className="bg-primary h-4 rounded-full"
+          style={{ width: `${progress}%` }}
+        ></div>
+      </div>
+      <div className="flex justify-between text-2xl text-gray-600">
+        <p>
+          Question <strong>{index + 1}</strong> / {numQuestions}
+        </p>
+        <p>
+          <strong>{points}</strong> / {maxPossiblePoints} points
+        </p>
+      </div>
     </header>
   );
 }
